@@ -95,7 +95,7 @@ const EditBook = () => {
   useEffect(() => {
     // Fetch the existing book details
     axios
-      .get(`http://localhost:4444/books/${id}`, {
+      .get(`https://backend-61w2.onrender.com/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
         },
@@ -121,7 +121,7 @@ const EditBook = () => {
     const data = { title, author, publishYear: Number(publishYear) };
 
     axios
-      .put(`http://localhost:4444/books/${id}`, data, {
+      .put(`https://backend-61w2.onrender.com/books/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
         },
