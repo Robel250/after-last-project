@@ -8,9 +8,16 @@ const ShowBook = () => {
 
     const [book,setBook]=useState({});
     const {id}=useParams()
+    const token=localStorage.getItem("token")
     useEffect(()=>{
         axios
-        .get(`https://backend-61w2.onrender.com/books/${id}`)
+        .get(`https://as1backend.onrender.com/books/${id}`,
+            {
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        )
         .then((resoponse)=>{
             setBook(resoponse.data);
             console.log(book)

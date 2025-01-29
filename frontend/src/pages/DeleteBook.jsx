@@ -45,7 +45,7 @@ const DeleteBook = () => {
 
   const handleDeleteBook = () => {
     axios
-      .delete(`https://backend-61w2.onrender.com/books/${id}`, {
+      .delete(`https://as1backend.onrender.com/books/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include token in headers
         },
