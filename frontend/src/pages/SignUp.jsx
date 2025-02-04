@@ -11,7 +11,7 @@ const SignUp = () => {
     const navigate=useNavigate();
     const handleSignup=()=>{
         axios
-        .post('http://localhost:4444/user/signup',{email,password})
+        .post('https://after-last-projectbackend.onrender.com/user/signup',{email,password})
         .then(()=>{
             enqueueSnackbar('sign up successful',{variant:'success'});
             navigate('/');

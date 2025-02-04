@@ -12,7 +12,7 @@ const DeleteBook = () => {
   const token = localStorage.getItem('token'); 
   const handleDeleteBook = () => {
     axios
-      .delete(`http://localhost:4444/workouts/${id}`, {
+      .delete(`https://after-last-projectbackend.onrender.com/workouts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, 
         },

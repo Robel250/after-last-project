@@ -11,7 +11,7 @@ const ShowBook = () => {
     const token=localStorage.getItem("token")
     useEffect(()=>{
         axios
-        .get(`http://localhost:4444/workouts/${id}`,
+        .get(`https://after-last-projectbackend.onrender.com/workouts/${id}`,
             {
                 headers:{
                     Authorization:`Bearer ${token}`
