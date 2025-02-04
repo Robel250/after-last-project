@@ -5,8 +5,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from 'dotenv';
-import bookRouter from "./routes/booksRoutes.js";
 import userRouter from "./routes/UserRoot.js";
+import workoutRouter from "./routes/workoutRoutes.js"; 
 
 dotenv.config(); 
 
@@ -22,21 +22,17 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "Welcome to MERN stack Tutorial" });
 });
 
-app.use("/books", bookRouter);
+// app.use("/books", workoutRouter)
 app.use("/user", userRouter);
+
+
+app.use("/workouts", workoutRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: "Internal server error", error: err.message });
 });
 
-// mongoose
-//     .connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log("Connected to the database");
-//         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-//     })
-//     .catch((error) => console.error("Database connection error:", error));
     
 mongoose.connect(mongoDBURL)
   .then(() => {

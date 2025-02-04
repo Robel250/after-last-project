@@ -6,65 +6,65 @@ import BackTable from '../components/Home/BackTable'
 
 const ShowBook = () => {
 
-    const [book,setBook]=useState({});
+    const [workout,setworkout]=useState(null);
     const {id}=useParams()
     const token=localStorage.getItem("token")
     useEffect(()=>{
         axios
-        .get(`https://as1backend.onrender.com/books/${id}`,
+        .get(`http://localhost:4444/workouts/${id}`,
             {
                 headers:{
                     Authorization:`Bearer ${token}`
                 }
             }
         )
-        .then((resoponse)=>{
-            setBook(resoponse.data);
-            console.log(book)
+        .then((response)=>{
+            setworkout(response.data);
+            console.log(response.data)
         })
         .catch((error)=>{console.log(error);})
-    },[]);
+    }, [id, token]);
+
+    if (!workout) {
+        return <div>Loading...</div>;
+      }
+
+      
   return (
     <div className='p-4'>
       <BackTable />
       <h1 className='my-4'>show Book</h1>
       <div className='border border-2 rounded rounded-x1 p-4'>
-       {book.image&&(
-        <div className='w-1/3 pr-4'>
-            <img src={book.image} alt={book.title}/>
-        </div>
-       )} 
-
-
+     
 
         <div className='my-4'>
             <span className='border p-1 rounded mx-2'>Id</span>
-            <span>{book._id}</span>
+            <span>{workout._id}</span>
         </div>
         
         <div className='my-4'>
-            <span className='border p-1 rounded mx-2'>Title</span>
-            <span>{book.title}</span>
+            <span className='border p-1 rounded mx-2'>Excersize</span>
+            <span>{workout.excersize}</span>
         </div>
         
         <div className='my-4'>
-            <span className='border p-1 rounded mx-2'>Author</span>
-            <span>{book.author}</span>
+            <span className='border p-1 rounded mx-2'>Load</span>
+            <span>{workout.load}</span>
         </div>
         
         <div className='my-4'>
-            <span className='border p-1 rounded mx-2'>Publish Year</span>
-            <span>{book.publishYear}</span>
+            <span className='border p-1 rounded mx-2'>Reps</span>
+            <span>{workout.reps}</span>
         </div>
         
         <div className='my-4'>
             <span className='border p-1 rounded mx-2'>Create Time</span>
-            <span>{new Date(book.createdAt).toString()}</span>
+            <span>{new Date(workout.createdAt).toString()}</span>
         </div>
         
         <div className='my-4'>
             <span className='border p-1 rounded mx-2'>Last Update Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+            <span>{new Date(workout.updatedAt).toString()}</span>
         </div>
 
 

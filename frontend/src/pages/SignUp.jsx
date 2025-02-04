@@ -5,13 +5,13 @@ import {enqueueSnackbar, useSnackbar}from 'notistack'
 
 
 const SignUp = () => {
-    const [username,setUsername]=useState('');
+
     const [email,setemail]=useState('');
     const [password,setpassword]=useState('');
     const navigate=useNavigate();
     const handleSignup=()=>{
         axios
-        .post('https://as1backend.onrender.com/user/signup',{username,email,password})
+        .post('http://localhost:4444/user/signup',{email,password})
         .then(()=>{
             enqueueSnackbar('sign up successful',{variant:'success'});
             navigate('/');
@@ -28,13 +28,7 @@ const SignUp = () => {
 
 
 
-         <div className="my-4">
-            <label className="mx-3 mr-4">user name</label>
-            <input type="text"
-                   value={username}
-                   onChange={e=>setUsername(e.target.value)}
-                   className="px-4 py-2"/>
-         </div>
+      
          <div className="my-4">
             <label className="mx-3 mr-4">Email</label>
             <input type="email"
